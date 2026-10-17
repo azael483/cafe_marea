@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Café Marea | Specialty Coffee in Cancún (Demo Landing Page)</title>
+    <meta name="description"
+        content="Café Marea is a specialty coffee shop in Cancún: fresh espresso, pastries baked every morning and a calm place to work. Demo landing page.">
+    <meta property="og:title" content="Café Marea | Specialty Coffee in Cancún">
+    <meta property="og:description" content="Fresh espresso, pastries baked every morning and a calm place to work.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f2f6f5;
+            --surface: #fff;
+            --text: #0b2e36;
+            --muted: #4d6a70;
+            --line: #cfdcdb;
+            --ink: #0b2e36;
+            --foam: #eef4f2;
+            --tide: #2a7f8e;
+            --sun: #f2b632;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        @media (prefers-color-scheme:dark) {
+            :root:not([data-theme="light"]) {
+                --bg: #081d23;
+                --surface: #0f2a32;
+                --text: #e8f1ef;
+                --muted: #9bb5b9;
+                --line: #21424b
+            }
+        }
+
+        :root[data-theme="dark"] {
+            --bg: #081d23;
+            --surface: #0f2a32;
+            --text: #e8f1ef;
+            --muted: #9bb5b9;
+            --line: #21424b
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: inherit
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: calc(72px + env(safe-area-inset-top, 0px))
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 400 1.0625rem/1.65 Inter, system-ui, sans-serif
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: "Bricolage Grotesque", Inter, system-ui, sans-serif;
+            line-height: 1.1;
+            margin: 0
+        }
+
+        a {
+            color: inherit
+        }
+
+        :focus-visible {
+            outline: 3px solid var(--sun);
+            outline-offset: 3px
+        }
+
+        .wrap {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 1.25rem
+        }
+
+        header {
+            position: sticky;
+            top: env(safe-area-inset-top, 0px);
+            z-index: 10;
+            background: var(--ink);
+            color: var(--foam)
+        }
+
+        header .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px
+        }
+
+        .logo {
+            font: 800 1.25rem "Bricolage Grotesque", sans-serif;
+            text-decoration: none
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: .95rem
+        }
+
+        nav a:hover {
+            color: var(--sun)
+        }
+
+        #menuBtn {
+            display: none;
+            background: none;
+            border: 1px solid #476a72;
+            color: inherit;
+            border-radius: 8px;
+            padding: .45rem .8rem;
+            font: inherit;
+            cursor: pointer
+        }
+
+        .hero {
+            background: var(--ink);
+            color: var(--foam);
+            padding: 5rem 0 7rem;
+            position: relative
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 8vw, 5.5rem);
+            font-weight: 800;
+            max-width: 11ch;
+            letter-spacing: -.02em
+        }
+
+        .hero p {
+            max-width: 46ch;
+            color: #b9d0d3;
+            font-size: 1.15rem;
+            margin: 1.5rem 0 2rem
+        }
+
+        .btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .8rem
+        }
+
+        .btn {
+            display: inline-block;
+            padding: .85rem 1.5rem;
+            border-radius: 999px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--sun);
+            background: var(--sun);
+            color: #0b2e36
+        }
+
+        .btn.alt {
+            background: none;
+            color: var(--foam);
+            border-color: #476a72
+        }
+
+        .btn:hover {
+            filter: brightness(1.08)
+        }
+
+        .hours {
+            margin-top: 2.5rem;
+            color: #b9d0d3;
+            font-size: .95rem
+        }
+
+        .wave {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -1px;
+            width: 100%;
+            height: 60px;
+            display: block
+        }
+
+        .wave path {
+            fill: var(--bg)
+        }
+
+        section {
+            padding: 4.5rem 0
+        }
+
+        h2 {
+            font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+            margin-bottom: .6rem
+        }
+
+        .lead {
+            color: var(--muted);
+            max-width: 55ch;
+            margin: 0 0 2.5rem
+        }
+
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            border-top: 2px solid var(--text)
+        }
+
+        .menu li {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: .2rem 1.5rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .menu h3 {
+            font-size: 1.35rem
+        }
+
+        .menu span {
+            font: 800 1.25rem "Bricolage Grotesque", sans-serif;
+            color: var(--tide)
+        }
+
+        .menu p {
+            grid-column: 1;
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .gal {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 150px;
+            gap: .7rem
+        }
+
+        .gal div {
+            border-radius: 14px;
+            display: flex;
+            align-items: flex-end;
+            padding: .9rem;
+            font-weight: 600;
+            color: #fff;
+            font-size: .95rem
+        }
+
+        .gal .a {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: linear-gradient(160deg, #2a7f8e, #0b2e36)
+        }
+
+        .gal .b {
+            background: #c98a1b
+        }
+
+        .gal .c {
+            background: #3f6f5f
+        }
+
+        .gal .d {
+            grid-column: span 2;
+            background: linear-gradient(120deg, #5a3d2b, #2a1c14)
+        }
+
+        .gal .e {
+            background: #2a7f8e
+        }
+
+        .gal .f {
+            background: #8f4b3a
+        }
+
+        details {
+            border-bottom: 1px solid var(--line);
+            padding: 1.1rem 0
+        }
+
+        details:first-of-type {
+            border-top: 2px solid var(--text)
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.4rem;
+            line-height: 1
+        }
+
+        details[open] summary::after {
+            content: "\2212"
+        }
+
+        details p {
+            margin: .7rem 0 0;
+            color: var(--muted);
+            max-width: 60ch
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 3rem
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin: 0 0 .35rem
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            font: inherit;
+            color: var(--text);
+            background: var(--surface);
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            padding: .8rem 1rem;
+            margin-bottom: 1.1rem
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical
+        }
+
+        .err {
+            color: #c0392b;
+            font-size: .9rem;
+            margin: -.8rem 0 1rem;
+            min-height: 1.2em
+        }
+
+        #ok {
+            margin-top: 1rem;
+            font-weight: 600;
+            color: var(--tide)
+        }
+
+        .map {
+            height: 200px;
+            border-radius: 14px;
+            border: 1.5px solid var(--line);
+            margin: 1rem 0;
+            position: relative;
+            background: linear-gradient(var(--line) 1px, transparent 1px) 0 0/40px 40px, linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/40px 40px, var(--surface);
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--muted);
+            font-size: .9rem
+        }
+
+        .map b {
+            display: block;
+            font-size: 2rem
+        }
+
+        .social {
+            display: flex;
+            gap: .7rem;
+            margin-top: 1rem
+        }
+
+        .social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1.5px solid var(--text);
+            display: grid;
+            place-items: center
+        }
+
+        .social a:hover {
+            background: var(--sun);
+            border-color: var(--sun);
+            color: #0b2e36
+        }
+
+        .social svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2
+        }
+
+        footer {
+            background: var(--ink);
+            color: #b9d0d3;
+            padding: 2rem 0;
+            font-size: .9rem
+        }
+
+        @media (max-width:760px) {
+            #menuBtn {
+                display: block
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 64px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                gap: 0;
+                background: var(--ink);
+                padding: .5rem 1.25rem 1rem
+            }
+
+            nav ul.open {
+                display: flex
+            }
+
+            nav li a {
+                display: block;
+                padding: .8rem 0
+            }
+
+            .hero {
+                padding: 3.5rem 0 6rem
+            }
+
+            section {
+                padding: 3.2rem 0
+            }
+
+            .gal {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 120px
+            }
+
+            .gal .a {
+                grid-column: span 2
+            }
+
+            .gal .d {
+                grid-column: span 2
+            }
+
+            .contact {
+                grid-template-columns: 1fr;
+                gap: 2rem
+            }
+        }
+
+        @media (prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="wrap">
+            <a class="logo" href="#top">Café Marea</a>
+            <button id="menuBtn" aria-expanded="false" aria-controls="navList">Menu</button>
+            <nav aria-label="Main">
+                <ul id="navList">
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Visit us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <div class="hero">
+            <div class="wrap">
+                <h1>Coffee that slows the morning down.</h1>
+                <p>Specialty espresso, pastries baked before sunrise and a quiet corner to work, a few blocks from the
+                    lagoon in Cancún.</p>
+                <div class="btns"><a class="btn" href="#contact">Visit us</a><a class="btn alt" href="#menu">See the
+                        menu</a></div>
+                <p class="hours">Open every day, 7:00 am to 6:00 pm</p>
+            </div>
+            <svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+                <path d="M0 30 C 240 70 480 -10 720 30 S 1200 70 1440 30 V60 H0 Z" />
+            </svg>
+        </div>
+
+        <section id="menu">
+            <div class="wrap">
+                <h2>Today at the bar</h2>
+                <p class="lead">A short menu we make well, every day.</p>
+                <ul class="menu">
+                    <li>
+                        <h3>Espresso &amp; flat white</h3><span>$45</span>
+                        <p>Single-origin beans from Chiapas, roasted weekly.</p>
+                    </li>
+                    <li>
+                        <h3>Cold brew</h3><span>$60</span>
+                        <p>Steeped for 18 hours, served over ice with orange peel.</p>
+                    </li>
+                    <li>
+                        <h3>Concha &amp; croissant</h3><span>$35</span>
+                        <p>Baked in-house each morning. When they sell out, they sell out.</p>
+                    </li>
+                    <li>
+                        <h3>Work table</h3><span>Free</span>
+                        <p>Fast Wi-Fi and power outlets at every seat. Stay as long as you like.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="gallery" style="padding-top:0">
+            <div class="wrap">
+                <h2>Inside the shop</h2>
+                <p class="lead">Sample photos go here. Each tile is replaced with the client's own images.</p>
+                <div class="gal">
+                    <div class="a">The main room</div>
+                    <div class="b">Morning bake</div>
+                    <div class="c">Patio</div>
+                    <div class="d">The espresso bar</div>
+                    <div class="e">Cold brew</div>
+                    <div class="f">Pastry case</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" style="padding-top:0">
+            <div class="wrap">
+                <h2>Questions we hear a lot</h2>
+                <p class="lead">Quick answers before you come by.</p>
+                <details>
+                    <summary>Do you have vegan options?</summary>
+                    <p>Yes. We offer oat and almond milk at no extra cost, and two vegan pastries every day.</p>
+                </details>
+                <details>
+                    <summary>Can I work here all day?</summary>
+                    <p>Yes. Every seat has a power outlet and the Wi-Fi is free. We only ask that you order something
+                        every couple of hours.</p>
+                </details>
+                <details>
+                    <summary>Do you take card payments?</summary>
+                    <p>We accept cash and all major cards. We do not take reservations, tables are first come, first
+                        served.</p>
+                </details>
+                <details>
+                    <summary>Can I order for an event?</summary>
+                    <p>Yes. Send us a message with the date and number of guests, and we'll reply within one business
+                        day.</p>
+                </details>
+            </div>
+        </section>
+
+        <section id="contact" style="padding-top:0">
+            <div class="wrap contact">
+                <div>
+                    <h2>Say hello</h2>
+                    <p class="lead">Questions or a catering request? Write to us.</p>
+                    <form id="form" novalidate>
+                        <label for="name">Name</label><input id="name" autocomplete="name">
+                        <div class="err" id="e1"></div>
+                        <label for="email">Email</label><input id="email" type="email" autocomplete="email">
+                        <div class="err" id="e2"></div>
+                        <label for="msg">Message</label><textarea id="msg"></textarea>
+                        <div class="err" id="e3"></div>
+                        <button class="btn" type="submit">Send message</button>
+                        <div id="ok" role="status"></div>
+                    </form>
+                </div>
+                <div>
+                    <h2 style="font-size:1.6rem">Find us</h2>
+                    <p style="margin:.6rem 0 0">Av. Ejemplo 123, Centro<br>Cancún, Quintana Roo</p>
+                    <div class="map" role="img" aria-label="Map placeholder">
+                        <div><b>&#9679;</b>Map goes here</div>
+                    </div>
+                    <p style="margin:0;color:var(--muted)">Follow along for daily specials.</p>
+                    <div class="social">
+                        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="1" />
+                            </svg></a>
+                        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24">
+                                <path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z" />
+                            </svg></a>
+                        <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24">
+                                <path d="M4 20l1.3-4.2A8 8 0 1 1 8.3 18.8L4 20z" />
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">Demo project: Café Marea is a fictional business created to showcase landing page design and
+            development.</div>
+    </footer>
+
+    <script>
+        var btn = document.getElementById('menuBtn'), list = document.getElementById('navList');
+        btn.addEventListener('click', function () { var o = list.classList.toggle('open'); btn.setAttribute('aria-expanded', o) });
+        list.addEventListener('click', function (e) { if (e.target.tagName === 'A') { list.classList.remove('open'); btn.setAttribute('aria-expanded', 'false') } });
+        document.getElementById('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var n = document.getElementById('name').value.trim(), m = document.getElementById('email').value.trim(), t = document.getElementById('msg').value.trim(), ok = true;
+            function s(id, msg) { document.getElementById(id).textContent = msg; if (msg) ok = false }
+            s('e1', n ? '' : 'Enter your name.');
+            s('e2', /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m) ? '' : 'Enter a valid email, like name@example.com.');
+            s('e3', t.length >= 10 ? '' : 'Write at least 10 characters.');
+            document.getElementById('ok').textContent = ok ? 'Message sent. (Demo: nothing is actually delivered.)' : '';
+            if (ok) this.reset();
+        });
+    </script>
+</body>
+
+</html>
